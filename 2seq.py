@@ -36,5 +36,3 @@ for i in numbers:
     if numbers.count(i) == 1:
         new_numbers.append(i)
 print('Результат:', ', '.join(str(i) for i in new_numbers))
-
-
