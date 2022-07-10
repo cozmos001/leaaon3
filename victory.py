@@ -24,16 +24,16 @@ import random
 
 # Словарь с именами известных людей и датами их рождения
 dict_people = {
-        'A_S_Pushkin' : '06.06.1799',
-        'John_Lennon' : '09.10.1940',
-        'M_Y_Lermontov' : '15.10.1814',
-        'Albert_Einstein' : '14.03.1879',
-        'Steve_Jobs' : '24.02.1955',
-        'Bill_Gates' : '28.10.1955',
-        'Yuri_Gagarin' : '09.03.1934',
-        'Peter_I' : '09.06.1672',
-        'D_I_Mendeleev' : '08.02.1834',
-        'F_M_Dostoevsky' : '11.11.1821'
+    'A_S_Pushkin': '06.06.1799',
+    'John_Lennon': '09.10.1940',
+    'M_Y_Lermontov': '15.10.1814',
+    'Albert_Einstein': '14.03.1879',
+    'Steve_Jobs': '24.02.1955',
+    'Bill_Gates': '28.10.1955',
+    'Yuri_Gagarin': '09.03.1934',
+    'Peter_I': '09.06.1672',
+    'D_I_Mendeleev': '08.02.1834',
+    'F_M_Dostoevsky': '11.11.1821'
 }
 
 # Список известных людей(ключи из словаря)
@@ -51,28 +51,24 @@ month = ['января', 'февраля', 'марта', 'апреля', 'мая
          'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
 
 play = True
-while play == True:
+while play:
     # Выбор пяти случайных людей из списка
     results = random.sample(great_people, 5)
-    win = 0
-    lose = 0
-    for i in results:
-        answer = input(f'Введите год рождения {i}(в формате - dd.mm.yyyy): ')
-        if answer == dict_people[i]:
+    right = 0
+    not_right = 0
+    for human in results:
+        answer = input(f'Введите год рождения {human}(в формате - dd.mm.yyyy): ')
+        if answer == dict_people[human]:
             print('Поздравляем, это правильный ответ!!!')
-            win += 1
+            right += 1
         else:
-            print('Это не правильный ответ!!!')
-            print('Правильный ответ: ' + ' '.join([str(day[int(dict_people[i].split('.')[0])-1]),
-                                                   str(month[int(dict_people[i].split('.')[1])-1]),
-                                                   dict_people[i].split('.')[2]]) + ' года')
-            lose += 1
-    print(f'Правельных ответов: {win}, не правильных ответов: {lose}')
+            print('Это неправильный ответ!!!')
+            print('Правильный ответ: ' + ' '.join([str(day[int(dict_people[human].split('.')[0]) - 1]),
+                                                   str(month[int(dict_people[human].split('.')[1]) - 1]),
+                                                   dict_people[human].split('.')[2]]) + ' года')
+            not_right += 1
+    print(f'Правельных ответов: {right}, неправильных ответов: {not_right}')
 
-    again = input('Хотите попробовать еще раз? ')
-    if 'y' in again.lower() or 'д' in again.lower():
-        play = True
-    else:
+    again = input('Хотите попробовать еще раз? y/n: ')
+    if 'n' in again.lower() or 'н' in again.lower():
         play = False
-
-

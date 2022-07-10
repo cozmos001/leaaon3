@@ -11,8 +11,8 @@
 '''
 count = int(input('Введите кол-во элементов: '))
 lst = []
-for i in range(1, count + 1):
-    digit = int(input(f'Введите {i} элемент: '))
+for i in range(0, count):
+    digit = int(input(f'Введите {i+1} элемент: '))
     lst.append(digit)
 lst.sort()
 print('Вывод:', lst)
